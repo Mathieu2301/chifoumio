@@ -1,0 +1,100 @@
+<!doctype html>
+<!--
+  by Mathieu Colmon
+  pro@usp-3.fr
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Chifoum.io</title>
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="{{ name }}">
+    <link rel="apple-touch-icon-precomposed" href="images/icon.png">
+    <meta name="msapplication-TileImage" content="images/icon.png">
+    <meta name="msapplication-TileColor" content="#009933">
+
+    <link rel="shortcut icon" href="images/icon.ico">
+    <meta name="theme-color" content="#009933">
+    
+    <link rel="stylesheet" href="css/iziToast.min.css"/>
+    <link rel="stylesheet" href="css/custom.css">
+    <script src="framework/vue.js"></script>
+
+    <style>
+
+    </style>
+
+    <!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/skel.min.js"></script>
+    <script src="js/skel-layers.min.js"></script>
+    <script src="js/init.js"></script>
+    <noscript>
+        <link rel="stylesheet" href="css/skel.css" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/style-xlarge.css" />
+    </noscript>
+    <!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+
+  </head>
+  <body class="landing" style="display: none;">
+
+    <!-- Header -->
+    <header id="header">
+        <h1><a href="/">Chifoum.io</a></h1>
+        <nav id="nav">
+            <ul>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="wrapper style1 align-center">
+		<div class="container">
+			<h2>Chifoum.io</h2>
+		</div>
+	</section>
+
+    <section id="main" class="wrapper style2 align-center" v-if="seen">
+        <div class="container">
+            <section>
+                <center><h2>{{ title }}</h2>
+                <div class="loader" v-if="searching">Searching for a player...</div>
+                <div v-else>
+                    <a @click="start_search" class="button fit small">Start search</a>
+                    <a @click="join_private" class="button fit small">Join private game</a>
+                </div>
+                
+            </section>
+        </div>
+    </section > <!-- main -->
+
+    <section id="in_game" class="wrapper style2 align-center" v-if="seen">
+        <div class="container">
+            <section>
+                <h2>{{ title }}</h2>
+
+                <img @click="select_pierre" class="img_btn" src="images/pierre.png" width="200">
+                <img @click="select_feuille" class="img_btn" src="images/feuille.png" width="200">
+                <img @click="select_ciseaux" class="img_btn" src="images/ciseaux.png" width="200">
+            </section>
+            
+        </div>
+    </section> <!-- page_2 -->
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+    <script src="js/iziToast.min.js"></script>
+    <script src="./index.js"></script>
+
+    <textarea id="clipboard" style="display: none;"></textarea>
+
+    <script>$(function(){ $('body').fadeIn(); }) </script>
+  </body>
+</html>
